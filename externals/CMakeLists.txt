@@ -119,7 +119,7 @@ endif()
 add_subdirectory(sirit)
 
 # httplib
-if (ENABLE_WEB_SERVICE AND NOT TARGET httplib::httplib)
+if (ENABLE_WEB_SERVICE OR USE_DISCORD_PRESENCE AND NOT TARGET httplib::httplib)
     set(HTTPLIB_REQUIRE_OPENSSL ON)
     add_subdirectory(cpp-httplib)
 endif()
@@ -313,4 +313,10 @@ endif()
 # SimpleIni
 if (NOT TARGET SimpleIni::SimpleIni)
     add_subdirectory(simpleini)
+endif()
+
+# sse2neon
+if (ARCHITECTURE_arm64 AND NOT TARGET sse2neon)
+    add_library(sse2neon INTERFACE)
+    target_include_directories(sse2neon INTERFACE sse2neon)
 endif()
