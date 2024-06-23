@@ -7,7 +7,8 @@
 #   prefix_var: name of a variable which will be set with the path to the extracted contents
 function(download_bundled_external remote_path lib_name prefix_var)
 
-set(package_base_url "https://github.com/yuzu-emu/")
+# set to suyu-emu as the -bin repositories haven't been changed
+set(package_base_url "https://github.com/suyu-emu/")
 set(package_repo "no_platform")
 set(package_extension "no_platform")
 if (WIN32)
@@ -16,7 +17,7 @@ if (WIN32)
 elseif (${CMAKE_SYSTEM_NAME} STREQUAL "Linux")
     set(package_repo "ext-linux-bin/raw/main/")
     set(package_extension ".tar.xz")
-elseif (ANDROID)    
+elseif (ANDROID)
     set(package_repo "ext-android-bin/raw/main/")
     set(package_extension ".tar.xz")
 else()
