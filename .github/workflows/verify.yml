@@ -4,10 +4,8 @@
 name: 'yuzu verify'
 
 on:
-  pull_request:
+  push:
     branches: [ master ]
-env:
-  PR_NUMBER: pr${{ github.event.number }}
 
 jobs:
   format:
